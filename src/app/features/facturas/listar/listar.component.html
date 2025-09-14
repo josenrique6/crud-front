@@ -1,0 +1,64 @@
+<!-- FILE: src/app/facturas/factura-form/factura-form.component.html -->
+<div class="container mt-3">
+  <form>
+    <h4>Cabecera</h4>
+    <div class="row">
+      <div class="col-md-2">
+        <input class="form-control" placeholder="Serie" formControlName="serie">
+      </div>
+      <div class="col-md-2">
+        <input class="form-control" placeholder="Número" formControlName="numero">
+      </div>
+      <div class="col-md-3">
+        <input type="date" class="form-control" formControlName="fecha">
+      </div>
+      <div class="col-md-2">
+        <input class="form-control" placeholder="RUC" formControlName="ruc">
+      </div>
+      <div class="col-md-3">
+        <input class="form-control" placeholder="Razón Social" formControlName="razonSocial">
+      </div>
+      <div class="col-md-2 mt-2">
+        <select class="form-select" formControlName="moneda">
+          <option value="PEN">Soles</option>
+          <option value="USD">Dólares</option>
+        </select>
+      </div>
+    </div>
+
+    <h4 class="mt-4">Detalle</h4>
+    <table class="table table-sm">
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Cantidad</th>
+          <th>Precio</th>
+          <th>Importe</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody formArrayName="items">
+        <tr *ngFor="let item of items.controls; let i = index">
+          <td><input class="form-control" formControlName="producto"></td>
+          <td><input type="number" class="form-control" formControlName="cantidad"></td>
+          <td><input type="number" class="form-control" formControlName="precio"></td>
+          <td><input class="form-control" formControlName="importe" disabled></td>
+          <td>
+            <button type="button" class="btn btn-danger btn-sm" >X</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button type="button" class="btn btn-secondary">+ Agregar ítem</button>
+
+    <div class="mt-3">
+      <strong>Subtotal:</strong> 0 <br>
+      <strong>IGV (18%):</strong> 0 <br>
+      <strong>Total:</strong> 0
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3" [disabled]="facturaForm.invalid">
+      Guardar Factura
+    </button>
+  </form>
+</div>
