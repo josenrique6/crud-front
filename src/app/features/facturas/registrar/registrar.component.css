@@ -1,0 +1,8 @@
+/* FILE: src/app/pages/invoices/registrar/registrar.component.scss */
+.invoice-wrapper .form-label {
+  margin-bottom: .25rem;
+}
+.invoice-wrapper .table td,
+.invoice-wrapper .table th {
+  vertical-align: middle;
+}

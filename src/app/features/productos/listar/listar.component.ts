@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from '../../../services/products.service';
+import { ProductService } from '../../../services/product.service';
 import { firstValueFrom } from 'rxjs';
-import { Producto } from '../../../models/producto';
+import { Product } from '../../../models/product';
 
 @Component({
   selector: 'app-listar',
@@ -10,14 +10,14 @@ import { Producto } from '../../../models/producto';
 })
 export class ListarComponent implements OnInit {
 
-  productos: Producto[] = [];
+  productos: Product[] = [];
 
   constructor(
-    private productosService: ProductsService
+    private productosService: ProductService
   ) { }
 
   async ngOnInit() {
-    var result = await firstValueFrom(this.productosService.listar());    
+    var result = await firstValueFrom(this.productosService.getAll());    
     this.productos = result;
   }
 }

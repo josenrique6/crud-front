@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ListarComponent } from './listar/listar.component';
-import { MainComponent } from './main/main.component';
 import { RegistrarComponent } from './registrar/registrar.component';
+import { BusquedaComponent } from './busqueda/busqueda.component';
 
 const routes: Routes = [  
-  {path: 'facturas' , component:MainComponent},
-  {path: 'facturas/registrar', component : RegistrarComponent},
-  {path: 'facturas/listar', component : ListarComponent}
+  {path: 'registrar', component : RegistrarComponent},
+  {path: 'editar/:id', component : RegistrarComponent},
+  {path: 'busqueda', component : BusquedaComponent}
 ];
 
 @NgModule({

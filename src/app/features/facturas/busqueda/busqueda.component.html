@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h2>Busqueda de Facturas</h2>
+
+      <div class="row">
+        <div class="col-sm-12">
+          <h3>Filtros</h3>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Buscar por cliente" [(ngModel)]="ruc"/>
+            <input type="date" class="form-control" [(ngModel)]="fechaInicio"  />
+            <input type="date" class="form-control" [(ngModel)]="fechaFin" />
+            <button class="btn btn-primary" type="button" (click)="searchInvoices()">Buscar</button>
+            <button class="btn btn-success" type="button" routerLink="/facturas/registrar">Nueva Factura</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-sm-12">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Serie-Número</th>
+                <th>RUC</th>
+                <th>Cliente</th>
+                <th>Fecha</th>
+                <th>Total</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let invoice of invoices">
+                <td>{{ invoice.id }}</td>
+                <td>{{ invoice.series }}-{{ invoice.number }}</td>
+                <td>{{ invoice.customerRuc}}</td>
+                <td>{{ invoice.customerName }}</td>
+                <td>{{ invoice.date | date:'dd/MM/yyyy' }}</td>
+                <td>{{ invoice.total | number:'1.2-2' }}</td>
+                <td>
+                  <button class="btn btn-sm btn-primary" (click)="viewInvoice(invoice.id)">Ver</button>
+                  <button class="btn btn-sm btn-secondary" (click)="viewInvoice(invoice.id)">Editar</button>
+                  <button class="btn btn-sm btn-danger" (click)="deleteInvoice(invoice.id)">Eliminar</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

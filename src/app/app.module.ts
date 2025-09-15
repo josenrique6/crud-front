@@ -7,6 +7,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { ProductosModule } from './features/productos/productos.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FacturasModule } from './features/facturas/facturas.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,10 @@ import { FacturasModule } from './features/facturas/facturas.module';
     AppRoutingModule,
     ProductosModule,
     HttpClientModule,
-    FacturasModule
+    FacturasModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ModalModule.forRoot()
   ],
   providers: [
     provideClientHydration(),
