@@ -17,7 +17,7 @@ export class ListarComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
-    var result = await firstValueFrom(this.productosService.getAll());    
-    this.productos = result;
+    //var result = await firstValueFrom(this.productosService.getAll());    
+    //this.productos = result;
   }
 }

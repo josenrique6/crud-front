@@ -1,14 +1,20 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Invoice } from '../models/Invoice';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InvoiceService {
 
-  private baseUrl = 'http://localhost:5065/api/invoice';
+  private baseUrl = `${environment.apiUrl}/invoice`;
+
+    public headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'accept': 'text/plain',
+    });
 
   constructor(private http: HttpClient) {}
 
@@ -17,7 +23,7 @@ export class InvoiceService {
   }
 
   getAll(): Observable<Invoice[]> {
-    return this.http.get<Invoice[]>(this.baseUrl);
+    return this.http.get<Invoice[]>(this.baseUrl, { headers: this.headers });
   }
 
   getById(id: number): Observable<Invoice> {
