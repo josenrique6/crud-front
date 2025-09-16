@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Invoice } from '../models/Invoice';
@@ -11,6 +11,11 @@ export class InvoiceService {
 
   private baseUrl = `${environment.apiUrl}/invoice`;
 
+    public headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'accept': 'text/plain',
+    });
+
   constructor(private http: HttpClient) {}
 
   create(payload: Invoice): Observable<number> {
@@ -18,7 +23,7 @@ export class InvoiceService {
   }
 
   getAll(): Observable<Invoice[]> {
-    return this.http.get<Invoice[]>(this.baseUrl);
+    return this.http.get<Invoice[]>(this.baseUrl, { headers: this.headers });
   }
 
   getById(id: number): Observable<Invoice> {

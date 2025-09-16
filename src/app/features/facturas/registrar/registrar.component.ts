@@ -108,10 +108,8 @@ ngOnInit(): void {
     });
   }
 
-  private loadProducts(): void {
-    this.subs.push(
-      this.productSrv.getAll().subscribe(list => (this.products = list))
-    );
+  private async loadProducts(): Promise<void> {
+    this.products = await firstValueFrom(this.productSrv.getAll());
   }
 
   openProductModal(): void {
@@ -249,6 +247,10 @@ ngOnInit(): void {
       );
     }
 
+  }
+
+  goBack(): void {
+    this.router.navigate(['/facturas/busqueda']);
   }
 
   trackByIndex = (_: number, __: any) => _;

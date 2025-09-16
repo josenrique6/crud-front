@@ -39,7 +39,7 @@ export class LoginComponent {
     try {
       const credentials = this.form.getRawValue() as LoginRequest;
       await firstValueFrom(this.authService.login(credentials));
-      this.router.navigate(['/productos/listar']);
+      this.router.navigate(['/facturas/busqueda']);
     } catch (error) {
       this.errorMessage = 'Usuario o contraseña incorrectos.';
     } finally {
