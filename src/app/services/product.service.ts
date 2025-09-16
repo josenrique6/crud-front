@@ -2,13 +2,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product';
 import { Observable, of } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  public baseUrl = 'http://localhost:5065/api/products';
+  public baseUrl = `${environment.apiUrl}/products`;
   public headers = new HttpHeaders({
     'Content-Type': 'application/json',
     'accept': 'text/plain',
