@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { AuthModule } from './features/auth/auth.module';
 import { AuthInterceptor } from './services/auth.interceptor';
+import { ErrorInterceptor } from './services/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,11 @@ import { AuthInterceptor } from './services/auth.interceptor';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
       multi: true
     }
   ],

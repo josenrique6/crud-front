@@ -1,0 +1,17 @@
+.navbar-brand {
+  font-weight: bold;
+}
+
+.btn-outline-light {
+  border-color: #fff;
+  
+  &:hover {
+    background-color: #fff;
+    color: #212529;
+  }
+}
+
+.container-fluid {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}

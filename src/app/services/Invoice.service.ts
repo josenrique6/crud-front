@@ -23,7 +23,7 @@ export class InvoiceService {
   }
 
   getAll(): Observable<Invoice[]> {
-    return this.http.get<Invoice[]>(this.baseUrl, { headers: this.headers });
+    return this.http.get<Invoice[]>(this.baseUrl, { headers: this.headers });  
   }
 
   getById(id: number): Observable<Invoice> {

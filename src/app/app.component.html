@@ -1,2 +1,12 @@
-<h1>CRUD - Frontend</h1>
-<router-outlet></router-outlet>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">CRUD - Frontend</a>
+    <div class="navbar-nav ms-auto" *ngIf="authService.isAuthenticated()">
+      <button class="btn btn-outline-light" (click)="logout()">Cerrar Sesión</button>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid mt-3">
+  <router-outlet></router-outlet>
+</div>
